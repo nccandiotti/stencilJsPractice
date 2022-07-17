@@ -41,11 +41,11 @@
 
 - A HTML tag can have an attribute and the "DOM objects" (JavaScript objects for DOM nodes) can (and most likely will) have properties. Often, attributes and properties are linked.
 
-- For example, an <input value="Starting value"> element has a value attribute. If you access that element via JavaScript, its respective objects representation also has a value property. Behind the scenes, the value attribute and value property are kind of linked.
+- For example, an < input value="Starting value" > element has a value attribute. If you access that element via JavaScript, its respective objects representation also has a value property. Behind the scenes, the value attribute and value property are kind of linked.
 
 - Other objects have no attribute equivalents though. For example, you can set aria- attributes (for accessibility: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA) on HTML elements. These attributes have no linked properties since they're only required in the markup for screen-readers to read them.
 
-- And even for the <input> element, it's not as simple as it might seem. If you change the value property programmatically, you will notice that the attribute value (which you can see in your browser dev tools) does not reflect that change. So it's a one-way route for this attribute basically.
+- And even for the < input > element, it's not as simple as it might seem. If you change the value property programmatically, you will notice that the attribute value (which you can see in your browser dev tools) does not reflect that change. So it's a one-way route for this attribute basically.
 
 - We'll dive deeper into this throughout the course and you will learn how to set attributes, properties and how to synchronize them.
 
@@ -56,3 +56,32 @@
 - giving custom element its own DOM that is not directly connected to light DOM (not affected by global styles)
 - in constructor - this.attachShadow({mode: 'open'})
 - append elements to shadowDom via shadowRoot
+
+web components [mdn](https://developer.mozilla.org/en-US/docs/Web/Web_Components)
+
+<hr>
+
+# Deeper Dive into Web Components
+
+- if you want to style ANY slotted content, use pseudoselector ::slotted(s\*)
+  - does not work for nested elements
+- :host - default styling for shadow dom elemen ts
+  - can add parens next to host for additional classes to also have that styling ex : :host(.important)
+  - also :host-context(p) - argument === context in which styles should apply (ex if custom el is nested within an element)
+
+### Styling Components from Outside
+
+- With the tools taught in the previous lectures, you can style your web components.
+- But only to a certain extent!
+- But here's on important thing to keep in mind: You can NOT style HTML elements you use in your component templates. These are exclusive to your component and not targetable with CSS selectors. There is one way to style them which you'll learn about later though.
+- sidenote - attribute changes don't get picked up bc there isn't logic for that in the component. The "text" attribute is extracted in connectedCallback (i.e. when the component gets mounted in the DOM) only
+
+### Other good resources
+
+- More about Templates & Slots: https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots
+
+- Google Article on Custom Elements: https://developers.google.com/web/fundamentals/web-components/customelements
+
+- Google Article on Shadow DOM: https://developers.google.com/web/fundamentals/web-components/shadowdom
+
+<hr>
