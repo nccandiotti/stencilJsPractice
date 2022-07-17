@@ -5,17 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <!-- these are light dom styles, not shadow dom -->
+    <style>
+      html {
+        --color-primary: lightblue;
+        font-family: sans-serif;
+      }
+      /* div {
+        border: 2px solid orange;
+      } */
+    </style>
     <script src="tooltip.js"></script>
     <script src="confirm-link.js"></script>
   </head>
   <body>
-    <nc-tooltip text="Web Components is a set of standards"
-      >Web Components</nc-tooltip
-    >
+    <nc-tooltip text="Web Components is a set of standards">
+      <span class="highlight">Web Components</span>
+    </nc-tooltip>
     are awesome ☺️
     <hr />
+    <div>This div does not get the web component styles</div>
     <nc-tooltip>Plain Tooltip</nc-tooltip>
     <!-- when extending a specific el type, use that tag + attribue is="your-element" -->
+    <br />
     <a is="nc-confirm-link" href="https://google.com">Google</a>
   </body>
 </html>
