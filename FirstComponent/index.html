@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="tooltip.js"></script>
+    <script src="confirm-link.js"></script>
   </head>
   <body>
     <nc-tooltip text="Web Components is a set of standards"
@@ -14,5 +15,7 @@
     are awesome ☺️
     <hr />
     <nc-tooltip>Plain Tooltip</nc-tooltip>
+    <!-- when extending a specific el type, use that tag + attribue is="your-element" -->
+    <a is="nc-confirm-link" href="https://google.com">Google</a>
   </body>
 </html>
