@@ -20,6 +20,11 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface NcSideDrawer {
+        "open": () => Promise<void>;
+        "opened": boolean;
+        "title": string;
+    }
 }
 declare global {
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
@@ -28,8 +33,15 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLNcSideDrawerElement extends Components.NcSideDrawer, HTMLStencilElement {
+    }
+    var HTMLNcSideDrawerElement: {
+        prototype: HTMLNcSideDrawerElement;
+        new (): HTMLNcSideDrawerElement;
+    };
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
+        "nc-side-drawer": HTMLNcSideDrawerElement;
     }
 }
 declare namespace LocalJSX {
@@ -47,8 +59,13 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface NcSideDrawer {
+        "opened"?: boolean;
+        "title"?: string;
+    }
     interface IntrinsicElements {
         "my-component": MyComponent;
+        "nc-side-drawer": NcSideDrawer;
     }
 }
 export { LocalJSX as JSX };
@@ -56,6 +73,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "nc-side-drawer": LocalJSX.NcSideDrawer & JSXBase.HTMLAttributes<HTMLNcSideDrawerElement>;
         }
     }
 }
