@@ -88,3 +88,27 @@ web components [mdn](https://developer.mozilla.org/en-US/docs/Web/Web_Components
 <hr>
 
 # Stencil
+
+- not a library and not a framework - it is a _tool_ (think of it like photoshop)
+
+## What is Stencil
+
+- a compiler for native web components
+
+## Stencil.js behind the scenes
+
+- Stencil.js spits out native, vanilla-JS web components.
+- BUT: These components have (vanilla) JavaScript added to them that enhances the web component experience by:
+- Loading component code lazily (i.e. source code gets only pulled into the page if it's really needed => This reduces the overall bundle size)
+- Loading required polyfills automatically for browsers that need it
+- Re-rendering the web (component) DOM efficiently (i.e. the DOM gets updated with as minimal impact as possible, to reduce the amount of work JS and the browser have to do)
+
+## JSX
+
+- HTML in JS - inspired by React
+- compiled to JS Render Statements (i.e. writes to the DOM)
+
+## To start using stencil
+
+- cd into folder
+- in terminal, run npm run build (runs compiler)
