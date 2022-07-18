@@ -76,6 +76,8 @@ web components [mdn](https://developer.mozilla.org/en-US/docs/Web/Web_Components
 - But here's on important thing to keep in mind: You can NOT style HTML elements you use in your component templates. These are exclusive to your component and not targetable with CSS selectors. There is one way to style them which you'll learn about later though.
 - sidenote - attribute changes don't get picked up bc there isn't logic for that in the component. The "text" attribute is extracted in connectedCallback (i.e. when the component gets mounted in the DOM) only
 
+- remember with slots, you cannot style nested content. Nested elements must be styled in the light DOM
+
 ### Other good resources
 
 - More about Templates & Slots: https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots
@@ -112,3 +114,20 @@ web components [mdn](https://developer.mozilla.org/en-US/docs/Web/Web_Components
 
 - cd into folder
 - in terminal, run npm run build (runs compiler)
+  - generates components.d.ts file w/ dev server
+- run npm start - executes script to run dev server
+  - happens in memory and allows us to view our components
+
+## Ensure Correct Imports !!!
+
+- Important: When creating new Stencil component files (which we'll do throughout this course), there is one extra import you should add at the top of your file:
+  - import {h} from '@stencil/core'
+-
+
+### Decorators
+
+- @Prop() - like attributes/props, if stencil detects change, it will trigger rerender of the part of the DOM that was changed. Prop decorator adds an "automatic watcher"
+- Gotcha - Stencil has **unidirectional data flow**
+  - need to add mutable = true to change value from the outside
+- props are properties w/in class that can be set - from outside - decorater watches for changes and re-runs render and updates what needs to be changed based on update
+- if you expect changes from WITHIN the component, use @State decorator
