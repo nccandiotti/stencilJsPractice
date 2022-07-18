@@ -13,6 +13,6 @@
     "jsx": "react",
     "jsxFactory": "h"
   },
-  "include": ["src", "src/global/.env"],
+  "include": ["src", ".env"],
   "exclude": ["node_modules"]
 }
