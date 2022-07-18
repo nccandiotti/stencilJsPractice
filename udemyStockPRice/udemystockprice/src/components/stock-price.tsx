@@ -1,4 +1,5 @@
 import { Component, h, State } from '@stencil/core';
+import { AV_API_KEY } from '../global/.env';
 
 @Component({
   tag: 'stock-price',
@@ -12,7 +13,7 @@ export class StockPrice {
   onFetchStockPrice(event: Event) {
     event.preventDefault();
     console.log('submitted');
-    fetch('https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM&apikey=LCF4V5FCK6KEPRW4')
+    fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM&apikey=${AV_API_KEY}`)
       .then(res => {
         return res.json();
       })
@@ -32,9 +33,8 @@ export class StockPrice {
         <button type="submit">Fetch</button>
       </form>,
       <div>
-        <p>Price: {this.stockPrice}</p>
+        <p>Price: ${this.stockPrice}</p>
       </div>,
     ];
   }
 }
-// key LCF4V5FCK6KEPRW4
