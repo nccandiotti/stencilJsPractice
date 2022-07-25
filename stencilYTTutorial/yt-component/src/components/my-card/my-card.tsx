@@ -8,6 +8,12 @@ import { Component, h, Prop, State, Watch } from '@stencil/core';
 
 //watch "watches" new value and old value
 
+//--------------- lifecycle Methods
+//connectedCallback - when component is getting loaded to DOM
+//disconnectedCallback - when component is removed from the DOM
+//componentWillLoad - this method is only called once, it's a good place to load data asynchronously
+//componentWillRender - it's always recommended to make any rendered state updates within componentWillRender()
+//componentDidLoad - called once just after the component fully loaded and the first render occurs
 @Component({
   tag: 'my-card',
   styleUrl: 'my-card.css',
@@ -69,6 +75,11 @@ export class MyCard {
         {this.showCard ? <p>We have data from the API</p> : null}
         {this.showReactTab ? reactContent : null}
         {this.showStencilTab ? stencilContent : null}
+
+        <h> </h>
+        <h3>Two way Data Binding in Stencil</h3>
+
+        <input type="text" class="my-input-textbox" value={this.name} onInput={(e: any) => (this.name = e.target.value)} />
       </div>
     );
 
