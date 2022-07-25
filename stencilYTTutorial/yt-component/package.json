@@ -26,13 +26,16 @@
     "generate": "stencil generate"
   },
   "dependencies": {
-    "@stencil/core": "^2.13.0"
+    "@stencil/core": "^2.13.0",
+    "dotenv": "^16.0.1"
   },
   "devDependencies": {
     "@types/jest": "^27.0.3",
+    "@types/node": "^18.6.1",
     "jest": "^27.4.5",
     "jest-cli": "^27.4.5",
-    "puppeteer": "^10.0.0"
+    "puppeteer": "^10.0.0",
+    "rollup-plugin-dotenv": "^0.3.0"
   },
   "license": "MIT"
 }
