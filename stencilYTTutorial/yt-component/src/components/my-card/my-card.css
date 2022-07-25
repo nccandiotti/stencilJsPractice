@@ -28,3 +28,11 @@ button {
 .btn-react {
   background-color: #f44336;
 }
+.my-input-textbox {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 0px 0px 0px 0px;
+  display: inline-block;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
