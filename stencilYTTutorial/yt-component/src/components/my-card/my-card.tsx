@@ -1,5 +1,5 @@
 import { Component, h, Prop, State, Watch } from '@stencil/core';
-
+import { API_KEY } from '../../../global';
 //Props from outside of component (can pass in index.html, like disabled for the button component) - add {mutable:true} to be able to change it from within component
 
 //state for changes within component
@@ -14,6 +14,7 @@ import { Component, h, Prop, State, Watch } from '@stencil/core';
 //componentWillLoad - this method is only called once, it's a good place to load data asynchronously
 //componentWillRender - it's always recommended to make any rendered state updates within componentWillRender()
 //componentDidLoad - called once just after the component fully loaded and the first render occurs
+
 @Component({
   tag: 'my-card',
   styleUrl: 'my-card.css',
@@ -21,6 +22,7 @@ import { Component, h, Prop, State, Watch } from '@stencil/core';
 })
 export class MyCard {
   @Prop({ mutable: true }) name: string;
+  @Prop() apiKey: string = API_KEY;
   @State() APIData: string;
   @State() showReactTab: boolean = false;
   @State() showStencilTab: boolean = false;
@@ -78,7 +80,6 @@ export class MyCard {
 
         <h> </h>
         <h3>Two way Data Binding in Stencil</h3>
-
         <input type="text" class="my-input-textbox" value={this.name} onInput={(e: any) => (this.name = e.target.value)} />
       </div>
     );
