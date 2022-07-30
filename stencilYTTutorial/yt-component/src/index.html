@@ -4,12 +4,22 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <title>Stencil Component Starter</title>
-
+    <style>
+      .my-card-wrapper {
+        width: 600px;
+        margin: 50px;
+        padding: 20px;
+        border-radius: 10%;
+        border: 3px solid red;
+        display: inline-block;
+        font-family: sans-serif;
+      }
+    </style>
     <script type="module" src="/build/yt-component.esm.js"></script>
     <script nomodule src="/build/yt-component.js"></script>
   </head>
   <body>
-    <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
+    <div class="my-card-wrapper">This is outside of the Stencil Component</div>
     <my-card name="Nicole"></my-card>
   </body>
 </html>
