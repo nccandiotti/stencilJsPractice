@@ -69,7 +69,7 @@ web components [mdn](https://developer.mozilla.org/en-US/docs/Web/Web_Components
   - can add parens next to host for additional classes to also have that styling ex : :host(.important)
   - also :host-context(p) - argument === context in which styles should apply (ex if custom el is nested within an element)
 
-### Styling Components from Outside
+## Styling Components from Outside
 
 - With the tools taught in the previous lectures, you can style your web components.
 - But only to a certain extent!

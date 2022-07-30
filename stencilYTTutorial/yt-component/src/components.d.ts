@@ -24,6 +24,8 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface SeachWorld {
+    }
 }
 declare global {
     interface HTMLMyCardElement extends Components.MyCard, HTMLStencilElement {
@@ -38,9 +40,16 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLSeachWorldElement extends Components.SeachWorld, HTMLStencilElement {
+    }
+    var HTMLSeachWorldElement: {
+        prototype: HTMLSeachWorldElement;
+        new (): HTMLSeachWorldElement;
+    };
     interface HTMLElementTagNameMap {
         "my-card": HTMLMyCardElement;
         "my-component": HTMLMyComponentElement;
+        "seach-world": HTMLSeachWorldElement;
     }
 }
 declare namespace LocalJSX {
@@ -62,9 +71,12 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface SeachWorld {
+    }
     interface IntrinsicElements {
         "my-card": MyCard;
         "my-component": MyComponent;
+        "seach-world": SeachWorld;
     }
 }
 export { LocalJSX as JSX };
@@ -73,6 +85,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "my-card": LocalJSX.MyCard & JSXBase.HTMLAttributes<HTMLMyCardElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "seach-world": LocalJSX.SeachWorld & JSXBase.HTMLAttributes<HTMLSeachWorldElement>;
         }
     }
 }
