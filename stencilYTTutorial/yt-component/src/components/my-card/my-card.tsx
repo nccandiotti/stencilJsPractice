@@ -26,14 +26,28 @@ export class MyCard {
   @State() APIData: string;
   @State() showReactTab: boolean = false;
   @State() showStencilTab: boolean = false;
+  @State() myStencilUsers: string;
+  @State() myReactUsers: string;
+  showCard: boolean = false;
 
-  changeState(): any {
-    this.name = 'name has been updated';
-    this.APIData = 'we have data from the api';
-    this.showCard = true;
+  componentWillLoad() {
+    this.APIData = 'loading...';
+    fetch(this.apiKey)
+      .then(res => {
+        return res.json();
+      })
+      .then(parsedRes => {
+        var metaData = parsedRes['Meta Data'];
+        var timeDateStencil = metaData['1. Information'];
+        this.APIData = timeDateStencil;
+      });
   }
 
-  showCard: boolean = false;
+  //   changeState(): any {
+  //     this.name = 'name has been updated';
+  //     this.APIData = 'we have data from the api';
+  //     this.showCard = true;
+  //   }
 
   //   componentWillUpdate(): void {
   //     console.log('COMPONENTWILLUPDATE');
@@ -68,12 +82,16 @@ export class MyCard {
       <div class="my-card-wrapper">
         <h2>Hi, I am {this.name}</h2>
 
+        {this.APIData}
+        <br />
+        <br />
         <button onClick={() => (this.showStencilTab = !this.showStencilTab)} class="btn-stencil">
           Stencil
         </button>
         <button onClick={() => (this.showReactTab = !this.showReactTab)} class="btn-react">
           React
         </button>
+
         {this.showCard ? <p>We have data from the API</p> : null}
         {this.showReactTab ? reactContent : null}
         {this.showStencilTab ? stencilContent : null}
