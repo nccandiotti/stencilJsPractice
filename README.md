@@ -131,3 +131,7 @@ web components [mdn](https://developer.mozilla.org/en-US/docs/Web/Web_Components
   - need to add mutable = true to change value from the outside
 - props are properties w/in class that can be set - from outside - decorater watches for changes and re-runs render and updates what needs to be changed based on update
 - if you expect changes from WITHIN the component, use @State decorator
+
+### Creating a new Stencil Component
+
+- run npx stencil g folder/component-name
