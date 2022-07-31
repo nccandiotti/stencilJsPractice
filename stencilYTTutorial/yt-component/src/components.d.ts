@@ -24,7 +24,11 @@ export namespace Components {
          */
         "middle": string;
     }
-    interface SeachWorld {
+    interface MySearch {
+        "searchText": string;
+    }
+    interface SeachWorlds {
+        "searchText": string;
     }
 }
 declare global {
@@ -40,16 +44,23 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
-    interface HTMLSeachWorldElement extends Components.SeachWorld, HTMLStencilElement {
+    interface HTMLMySearchElement extends Components.MySearch, HTMLStencilElement {
     }
-    var HTMLSeachWorldElement: {
-        prototype: HTMLSeachWorldElement;
-        new (): HTMLSeachWorldElement;
+    var HTMLMySearchElement: {
+        prototype: HTMLMySearchElement;
+        new (): HTMLMySearchElement;
+    };
+    interface HTMLSeachWorldsElement extends Components.SeachWorlds, HTMLStencilElement {
+    }
+    var HTMLSeachWorldsElement: {
+        prototype: HTMLSeachWorldsElement;
+        new (): HTMLSeachWorldsElement;
     };
     interface HTMLElementTagNameMap {
         "my-card": HTMLMyCardElement;
         "my-component": HTMLMyComponentElement;
-        "seach-world": HTMLSeachWorldElement;
+        "my-search": HTMLMySearchElement;
+        "seach-worlds": HTMLSeachWorldsElement;
     }
 }
 declare namespace LocalJSX {
@@ -71,12 +82,17 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
-    interface SeachWorld {
+    interface MySearch {
+        "searchText"?: string;
+    }
+    interface SeachWorlds {
+        "searchText"?: string;
     }
     interface IntrinsicElements {
         "my-card": MyCard;
         "my-component": MyComponent;
-        "seach-world": SeachWorld;
+        "my-search": MySearch;
+        "seach-worlds": SeachWorlds;
     }
 }
 export { LocalJSX as JSX };
@@ -85,7 +101,8 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "my-card": LocalJSX.MyCard & JSXBase.HTMLAttributes<HTMLMyCardElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
-            "seach-world": LocalJSX.SeachWorld & JSXBase.HTMLAttributes<HTMLSeachWorldElement>;
+            "my-search": LocalJSX.MySearch & JSXBase.HTMLAttributes<HTMLMySearchElement>;
+            "seach-worlds": LocalJSX.SeachWorlds & JSXBase.HTMLAttributes<HTMLSeachWorldsElement>;
         }
     }
 }
