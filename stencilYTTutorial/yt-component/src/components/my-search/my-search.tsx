@@ -8,7 +8,7 @@ import { API_KEY } from '../../../global.js';
 })
 export class MySearch {
   @Prop({ mutable: true }) searchText: string;
-  @State() searchResult;
+  @State() searchResult: {} = {};
   @State() userInput: string;
 
   onUserInput(event: Event) {
@@ -39,14 +39,16 @@ export class MySearch {
         <br />
         {this.searchResult ? (
           <table id="api-table">
-            <tr>
+            <tbody>
               {Object.keys(this.searchResult).map(key => (
-                <td>{key}</td>
+                <tr>
+                  <td>{key}</td>
+                  {Object.values(this.searchResult).map(val => (
+                    <td>{val}</td>
+                  ))}
+                </tr>
               ))}
-              {Object.values(this.searchResult).map(val => (
-                <td>{val}</td>
-              ))}
-            </tr>
+            </tbody>
           </table>
         ) : null}
       </div>
