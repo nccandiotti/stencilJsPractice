@@ -1,4 +1,4 @@
-import { Component, h, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Prop, State, Watch, Listen } from '@stencil/core';
 import { API_KEY } from '../../../global';
 //Props from outside of component (can pass in index.html, like disabled for the button component) - add {mutable:true} to be able to change it from within component
 
@@ -41,6 +41,13 @@ export class MyCard {
         var timeDateStencil = metaData['1. Information'];
         this.APIData = timeDateStencil;
       });
+  }
+  //provide name of event as first param, need target:body because the search is a SIBLING in HTML and not child. If it were a child of my-card wouldn't need the target: body
+  @Listen('searchNameSelected', { target: 'body' })
+  searchNameSelectedHandler(event: CustomEvent<string>) {
+    alert('called this method');
+    //event.detail gets custom event data
+    this.name = event.detail;
   }
 
   //   changeState(): any {

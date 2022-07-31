@@ -1,4 +1,4 @@
-import { Component, Host, h, State, Prop } from '@stencil/core';
+import { Component, Host, h, State, Prop, Event, EventEmitter } from '@stencil/core';
 import { API_KEY } from '../../../global.js';
 
 @Component({
@@ -26,6 +26,13 @@ export class MySearch {
         this.searchResult = parsedRes['Meta Data'];
       });
   }
+
+  @Event({ bubbles: true, composed: true }) searchNameSelected: EventEmitter<string>;
+
+  onRowClick(name: string) {
+    this.searchNameSelected.emit(name);
+  }
+
   render() {
     return (
       <div class="main-search-div">
@@ -41,7 +48,7 @@ export class MySearch {
           <table id="api-table">
             <tbody>
               {Object.keys(this.searchResult).map(key => (
-                <tr>
+                <tr onClick={this.onRowClick.bind(this, key)}>
                   <td>{key}</td>
                   {Object.values(this.searchResult).map(val => (
                     <td>{val}</td>
