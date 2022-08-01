@@ -1,0 +1,21 @@
+:host {
+  display: block;
+  font-family: sans-serif;
+  font-size: 20px;
+}
+
+ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+li {
+  padding: 10px;
+  list-style: none;
+  border-radius: 10px;
+}
+
+li:hover {
+  color: #391a54;
+  cursor: pointer;
+}
